@@ -23,7 +23,7 @@ export default class SearchBar extends Component {
                 { theme: "colored" }
             );
         };
-        this.props.OnSubmit(this.state.query);
+        this.props.onSubmit(this.state.query);
         this.setState({
             query: "",
         });
@@ -32,7 +32,7 @@ export default class SearchBar extends Component {
     render() {
         return (
             <header className={css.Searchbar}>
-                <form className={css.SearchForm}  onSubmit={this.handleChange}>
+                <form className={css.SearchForm}  onSubmit={this.handleSubmit}>
                     <button type="submit" className={css.SearchFormButton}>
                         <span className={css.SearchFormButtonLable}>Search</span>
                     </button>

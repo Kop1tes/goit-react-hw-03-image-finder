@@ -15,7 +15,7 @@ export class App extends Component {
     images: [],
     error: "",
     isLoading: false,
-    largeImageUrl: "",
+    largeImageURL: "",
     tags: "",
     totalImages: 0,
   }
@@ -25,7 +25,8 @@ export class App extends Component {
 
     if (prevState.page !== this.state.page || prevState.query !== this.state.query) {
       this.setState({ isLoading: true });
-      API.getImages(query, page).then(({ hits, totalHits }) => {
+      API.getImages(query, page)
+        .then(({ hits, totalHits }) => {
         if (hits.length) {
           return this.setState(prev => ({
             images: [...prev.images, ...hits],
@@ -59,8 +60,8 @@ export class App extends Component {
     });
   };
 
-  openModal = largeImageUrl => {
-    this.setState({ largeImageUrl });
+  openModal = largeImageURL => {
+    this.setState({ largeImageURL });
     this.toggleModal();
   };
 
@@ -75,10 +76,9 @@ export class App extends Component {
   };
 
   render() {
-    const { isLoading, images, isShowModal, largeImageUrl, tags, error } = this.state;
+    const { isLoading, images, isShowModal, largeImageURL, tags, error } = this.state;
 
     return (
-      <>
         <div className={css.App}>
           <>
             <Searchbar onSubmit={this.onSearch} />
@@ -93,17 +93,16 @@ export class App extends Component {
             {isLoading && <MyLoader />}
 
             {error && (
-              <h1>Sorry, there are no images matching your search tags.</h1>
+              <h1>Sorry, there are no images matching your search {tags}.</h1>
             )}
             {isShowModal && (
               <Modal onClose={this.toggleModal}>
-                <img src={largeImageUrl} alt={tags} />
+                <img src={largeImageURL} alt={tags} />
               </Modal>
             )}
-            <ToastContainer autoClose={2000} />
+            <ToastContainer autoClose={3000} />
           </>
         </div>
-      </>
     );
   }
-};
+}
