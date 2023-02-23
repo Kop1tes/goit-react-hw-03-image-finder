@@ -15,7 +15,7 @@ export class App extends Component {
     images: [],
     error: "",
     isLoading: false,
-    largeImageURL: "",
+    largeImageURL: '',
     tags: "",
     totalImages: 0,
   }
