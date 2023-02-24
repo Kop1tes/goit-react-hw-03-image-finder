@@ -7,3 +7,6 @@ export const Button = ({ response }) => (
     </button>
 );
 
+Button.propTypes = {
+    response: PropTypes.func.isRequired,
+};
