@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import css from "./Modal.module.css";
 import { createPortal } from 'react-dom';
 import { createRef } from 'react';
+import PropTypes from "prop-types";
 
 const modalRoot = document.querySelector("#modal-root");
 
@@ -9,7 +10,7 @@ export default class Modal extends Component {
     static propTypes = {
         onClose: PropTypes.func.isRequired,
         children: PropTypes.node.isRequired,
-    }
+    };
 
     backdropRef = createRef();
 
